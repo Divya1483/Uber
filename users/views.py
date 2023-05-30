@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -30,6 +31,7 @@ class GetStudentsView(APIView):
         serializers.is_valid(raise_exception=True)
         serializers.save()
         return Response({"message":"done"})
+     
 
 
 
@@ -52,5 +54,21 @@ class GetOrdersView(APIView):
         serializers = OrdersSerializers(data=params)
         serializers.is_valid(raise_exception=True)
         serializers.save()
-        return Response({"message":"done"})
+        return Response({"message","done"})
+
+
+
+class DeleteStudentViews(APIView):
+   def get(self,request,pk):
+      instance = Students.objects.get(id = pk)
+      instance.delete()
+      return Response({"message","deletesuccesfully"})
+
+class StudentsDetailAddressViews(APIView):
+    def get(self,request,pk):
+        instances = Students.objects.filter(id = pk)
+        serializer = StudentsDetailAddressSerializers(instances,many = True)
+        serializer = StudentsAddress
+        return Response({"serializer data"})
+
 

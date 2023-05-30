@@ -26,3 +26,15 @@ class Orders(models.Model):
     order_address = models.TextField(max_length=100 ,null=True , blank=True)
     order_place_at = models.DateTimeField(max_length=100 ,null=True , blank=True)
 
+class StudentsAddress(models.Model):
+
+    students = models.ForeignKey(Students,on_delete=models.CASCADE,null=True,  related_name = "student_addresses")
+    street_name = models.CharField ( max_length=100 , null=True , blank=True )
+    house_no = models.IntegerField ( max_length=5 , null=True , blank=True )
+    city = models.CharField ( max_length=15 , null=True , blank=True )
+    state = models.CharField ( max_length=15 , null=True , blank=True )
+    country = models.CharField( max_length=12 , null=True , blank=True )
+    pincode = models.IntegerField( max_length=6 , null=True , blank=True )
+
+    def __str__(self):
+        return str(self.street_name)
