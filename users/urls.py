@@ -11,6 +11,5 @@ urlpatterns = [
     path('Delete-student-address/<int:pk>',DeleteStudentsAddressViews.as_view())
 
 
-
 ]
 
